@@ -14,9 +14,9 @@ CXXFLAGS = -Wall
 all: aoc
 
 aoc:
-> $(CXX) $(CXXFLAGS) *.c -o $(DAY)
+> $(CXX) $(CXXFLAGS) *.c -o $(DAY).o
 
 clean:
-> rm -f *.o $(DAY)
+> rm -f *.o $(DAY).o
 
 # end
