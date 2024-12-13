@@ -38,6 +38,19 @@ int int_smaller_than(const void *item, const void *compare_to) {
   return 0;
 }
 
+int repetitions_in_array(int needle, int haystack[], int haystack_size) {
+  int count = 0;
+  int curr = 0;
+
+  for (int i = 0; i < haystack_size; i++) {
+    curr = haystack[i];
+    if (curr == needle) {
+      ++count;
+    }
+  }
+  return count;
+}
+
 int main(void) {
   FILE *f = fopen("input", "r");
 
@@ -101,7 +114,23 @@ int main(void) {
     printf("%d, ", differences[i]);
   }
 
-  printf("\nTotal Difference: %zu\n ",  total_difference);
+  printf("\nTotal Difference: %zu\n ", total_difference);
+
+  /* Part two */
+
+  int similarity = 0;
+
+  printf("\nColumn one repeats in col 2:\n");
+  for (int i = 0; i < size; i++) {
+    int repeated = repetitions_in_array(col1[i], col2, size);
+    if (repeated) {
+      printf("%d repeats in col 2 by: %d\n", col1[i], repeated);
+      int simsum = col1[i] * repeated;
+      similarity += simsum;
+    }
+  }
+
+  printf("\nTotal simsum: %d\n", similarity);
 
 
   return 0;
